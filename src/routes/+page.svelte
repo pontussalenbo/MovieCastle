@@ -6,44 +6,44 @@
 	export let data: any;
 	let movies = [
 		{
-			imgsrc:
+			poster:
 				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
 			title: 'Pearl Harbour',
 			genres: ['Action', 'Drama', 'History'],
-			imdbkey: 'tt0213149',
-			id: '676'
+			id: '676',
+			date: '2001'
 		},
 		{
-			imgsrc:
+			poster:
 				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
 			title: 'Pearl Harbour',
 			genres: ['Action', 'Drama', 'History'],
-			imdbkey: 'tt0213149',
-			id: '676'
+			id: '676',
+			date: '2001'
 		},
 		{
-			imgsrc:
+			poster:
 				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
 			title: 'Pearl Harbour',
 			genres: ['Action', 'Drama', 'History'],
-			imdbkey: 'tt0213149',
-			id: '676'
+			id: '676',
+			date: '2001'
 		},
 		{
-			imgsrc:
+			poster:
 				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
 			title: 'Pearl Harbour',
 			genres: ['Action', 'Drama', 'History'],
-			imdbkey: 'tt0213149',
-			id: '676'
+			id: '676',
+			date: '2001'
 		},
 		{
-			imgsrc:
+			poster:
 				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
 			title: 'Pearl Harbour',
 			genres: ['Action', 'Drama', 'History'],
-			imdbkey: 'tt0213149',
-			id: '676'
+			id: '676',
+			date: '2001'
 		}
 	];
 	const myMovies = [];
@@ -62,5 +62,5 @@
 		<CardCarousel title="Hottest movies today" {movies} />
 	{/if}
 	<Divider />
-	<CardCarousel title="My MovieCastle" movies={myMovies} />
+	<CardCarousel title="My MovieCastle" moviecastle={true} movies={myMovies} />
 </div>

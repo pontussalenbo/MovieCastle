@@ -6,6 +6,7 @@
 	let carousel;
 	export let movies: any[];
 	export let title: string;
+	export let moviecastle: bool;
 	const handleNextClick = () => {
 		carousel.goToNext();
 	};
@@ -21,7 +22,11 @@
 	>
 		{#each movies as movie}
 			<SplideSlide>
-				<MovieCard {movie} />
+				{#if moviecastle}
+					<MovieCard {movie} {movies} />
+				{:else}
+					<MovieCard {movie} />
+				{/if}
 			</SplideSlide>
 		{/each}
 	</Splide>
