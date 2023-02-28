@@ -5,5 +5,5 @@
 </script>
 
 <div class="flex justify-center text-4xl">
-	hej du har kommit till {data.post.imdbkey}
+	hej du har kommit till {data.title}
 </div>
