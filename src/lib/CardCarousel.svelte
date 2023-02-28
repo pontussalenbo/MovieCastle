@@ -5,8 +5,9 @@
 	import MovieCard from './MovieCard.svelte';
 	let carousel;
 	export let movies: any[];
+	export let myMovies: any[];
 	export let title: string;
-	export let moviecastle: bool;
+	export let moviecastle: boolean = false;
 	const handleNextClick = () => {
 		carousel.goToNext();
 	};
@@ -22,11 +23,7 @@
 	>
 		{#each movies as movie}
 			<SplideSlide>
-				{#if moviecastle}
-					<MovieCard {movie} {movies} />
-				{:else}
-					<MovieCard {movie} />
-				{/if}
+				<MovieCard {movie} bind:myMovies {moviecastle} />
 			</SplideSlide>
 		{/each}
 	</Splide>

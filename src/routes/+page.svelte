@@ -46,7 +46,7 @@
 			date: '2001'
 		}
 	];
-	const myMovies = [];
+	let myMovies = [];
 	let submittedSearchText = '';
 </script>
 
@@ -57,10 +57,14 @@
 		<span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
 	</Alert> -->
 	{#if submittedSearchText !== ''}
-		<CardCarousel title={`Movies based on search: ${submittedSearchText}`} {movies} />
+		<CardCarousel
+			title={`Movies based on search: ${submittedSearchText}`}
+			bind:movies
+			bind:myMovies
+		/>
 	{:else}
-		<CardCarousel title="Hottest movies today" {movies} />
+		<CardCarousel title="Hottest movies today" bind:movies bind:myMovies />
 	{/if}
 	<Divider />
-	<CardCarousel title="My MovieCastle" moviecastle={true} movies={myMovies} />
+	<CardCarousel bind:movies={myMovies} title="My MovieCastle" moviecastle={true} />
 </div>
