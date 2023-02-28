@@ -18,7 +18,7 @@
 		{title}
 	</div>
 	<Splide
-		options={{ perPage: Math.min(movies.length, 5), perMove: 1, gap: '5rem', rewind: true }}
+		options={{ perPage: Math.max(1, Math.min(movies.length, 5)), perMove: 1, gap: '5rem', rewind: true }}
 		class="flex flex-row"
 	>
 		{#each movies as movie}

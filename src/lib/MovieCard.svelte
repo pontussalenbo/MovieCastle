@@ -5,12 +5,15 @@
 	export let moviecastle: boolean = false;
 
 	const handleAdd = () => {
+		if (myMovies.find(item => movie.id === item.id)) return;
 		myMovies = [movie, ...myMovies];
+		localStorage.setItem("myMovies", JSON.stringify(myMovies));
 	};
 
 	const handleRemove = (e: Event) => {
-		myMovies = myMovies
-						.filter(item => movie.id !== item.id);
+		myMovies = myMovies.filter(item => movie.id !== item.id);
+		if (myMovies.length === 0) localStorage.removeItem("myMovies");
+		else localStorage.setItem("myMovies", JSON.stringify(myMovies));
 	}
 </script>
 

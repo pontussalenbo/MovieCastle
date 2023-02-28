@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { Alert } from 'flowbite-svelte';
+	/** @type {import('./$types').PageData} */
+	export let data;
+
 	import SearchForm from '../lib/SearchForm.svelte';
 	import CardCarousel from '../lib/CardCarousel.svelte';
 	import Divider from '../lib/Divider.svelte';
-	export let data: any;
 	let movies = [
 		{
 			poster:
@@ -46,16 +47,13 @@
 			date: '2001'
 		}
 	];
-	let myMovies: any[] = [];
+	let myMovies: any[] = data.myMovies;
+	console.log(myMovies);
 	let submittedSearchText = '';
 </script>
 
 <div class="p-8 flex flex-col w-full">
 	<SearchForm bind:submittedSearchText bind:movies />
-	<!-- <Alert>
-		{console.log(data)}
-		<span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
-	</Alert> -->
 	{#if submittedSearchText !== ''}
 		<CardCarousel
 			title={`Movies based on search: ${submittedSearchText}`}

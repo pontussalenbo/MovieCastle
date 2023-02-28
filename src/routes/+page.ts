@@ -1,6 +1,13 @@
 import type { LoadEvent } from '@sveltejs/kit';
+import { browser } from "$app/environment"
+
 export async function load({ fetch, params }: LoadEvent) {
-    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-    const data = await res.json();
-    return { props: { data } };
+    if (typeof localStorage === "undefined") {
+        return { myMovies: [] };
+    }
+    const myMovies = localStorage.getItem('myMovies');
+    if (myMovies !== null) {        
+        return {"myMovies": browser && JSON.parse(localStorage.getItem('myMovies') ?? "")};
+    }
+    return { myMovies: [] };
 }
