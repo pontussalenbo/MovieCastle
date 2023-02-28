@@ -2,12 +2,16 @@
 	import { Card, ButtonGroup, Button } from 'flowbite-svelte';
 	export let movie: any;
 	export let myMovies: any[];
+	export let moviecastle: boolean = false;
 
 	const handleAdd = () => {
-		console.log(myMovies);
 		myMovies = [movie, ...myMovies];
-		console.log(myMovies);
 	};
+
+	const handleRemove = (e: Event) => {
+		myMovies = myMovies
+						.filter(item => movie.id !== item.id);
+	}
 </script>
 
 <div class="mt-2 max-w-4xl">
@@ -18,5 +22,9 @@
 		</div>
 		<div class="mt-2" />
 	</Card>
-	<Button on:click={handleAdd} outline color="green">Add to MovieCastle</Button>
+	{#if moviecastle}
+		<Button on:click={handleRemove} outline color="red">Remove</Button>
+	{:else}
+		<Button on:click={handleAdd} outline color="green">Add to MovieCastle</Button>
+	{/if}
 </div>

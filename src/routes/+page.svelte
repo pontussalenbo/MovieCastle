@@ -46,7 +46,7 @@
 			date: '2001'
 		}
 	];
-	let myMovies = [];
+	let myMovies: any[] = [];
 	let submittedSearchText = '';
 </script>
 
@@ -66,5 +66,5 @@
 		<CardCarousel title="Hottest movies today" bind:movies bind:myMovies />
 	{/if}
 	<Divider />
-	<CardCarousel bind:movies={myMovies} title="My MovieCastle" moviecastle={true} />
+	<CardCarousel bind:movies={myMovies} bind:myMovies  title="MyMovieCastle" moviecastle={true} />
 </div>
