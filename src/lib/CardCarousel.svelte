@@ -1,10 +1,11 @@
 <script lang="ts">
 	// import Carousel from 'svelte-carousel';
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
+	import { CardPlaceholder } from 'flowbite-svelte';
 	import '@splidejs/svelte-splide/css';
 	import MovieCard from './MovieCard.svelte';
 	let carousel;
-	export let movies: any[];
+	export let movies: any[] = [];
 	export let myMovies: any[];
 	export let title: string;
 	export let moviecastle: boolean = false;
@@ -18,13 +19,24 @@
 		{title}
 	</div>
 	<Splide
-		options={{ perPage: Math.max(1, Math.min(movies.length, 5)), perMove: 1, gap: '5rem', rewind: true }}
+		options={{
+			perPage: Math.max(1, Math.min(movies.length, 5)),
+			perMove: 1,
+			gap: '5rem',
+			rewind: true
+		}}
 		class="flex flex-row"
 	>
-		{#each movies as movie}
+		{#if movies.length === 0}
 			<SplideSlide>
-				<MovieCard {movie} bind:myMovies {moviecastle} />
+				<CardPlaceholder class="mt-4" />
 			</SplideSlide>
-		{/each}
+		{:else}
+			{#each movies as movie}
+				<SplideSlide>
+					<MovieCard {movie} bind:myMovies {moviecastle} />
+				</SplideSlide>
+			{/each}
+		{/if}
 	</Splide>
 </div>

@@ -5,48 +5,7 @@
 	import SearchForm from '../lib/SearchForm.svelte';
 	import CardCarousel from '../lib/CardCarousel.svelte';
 	import Divider from '../lib/Divider.svelte';
-	let movies = [
-		{
-			poster:
-				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
-			title: 'Pearl Harbour',
-			genres: ['Action', 'Drama', 'History'],
-			id: '676',
-			date: '2001'
-		},
-		{
-			poster:
-				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
-			title: 'Pearl Harbour',
-			genres: ['Action', 'Drama', 'History'],
-			id: '676',
-			date: '2001'
-		},
-		{
-			poster:
-				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
-			title: 'Pearl Harbour',
-			genres: ['Action', 'Drama', 'History'],
-			id: '676',
-			date: '2001'
-		},
-		{
-			poster:
-				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
-			title: 'Pearl Harbour',
-			genres: ['Action', 'Drama', 'History'],
-			id: '676',
-			date: '2001'
-		},
-		{
-			poster:
-				'https://m.media-amazon.com/images/M/MV5BMGJkMjUxNmMtYTk2Mi00N2M1LThhYTgtMDVmZTU4ZjE4MmU3XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_FMjpg_UX630_.jpg',
-			title: 'Pearl Harbour',
-			genres: ['Action', 'Drama', 'History'],
-			id: '676',
-			date: '2001'
-		}
-	];
+	let movies = data.movies;
 	let myMovies: any[] = data.myMovies;
 	console.log(myMovies);
 	let submittedSearchText = '';
