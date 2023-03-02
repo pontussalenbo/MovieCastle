@@ -12,6 +12,13 @@
 	const handleNextClick = () => {
 		carousel.goToNext();
 	};
+
+	$: splideOptions = {
+		perPage: movies ? Math.max(1, Math.min(movies.length, 5)) : 5,
+		perMove: 1,
+		gap: '2rem',
+		rewind: true
+	};
 </script>
 
 <div class="min-h-md">
@@ -19,15 +26,10 @@
 		{title}
 	</div>
 	<Splide
-		options={{
-			perPage: Math.max(1, Math.min(movies.length, 5)),
-			perMove: 1,
-			gap: '5rem',
-			rewind: true
-		}}
+		options={splideOptions}
 		class="flex flex-row"
 	>
-		{#if movies.length === 0}
+		{#if movies === undefined || movies.length === 0}
 			<SplideSlide>
 				<CardPlaceholder class="mt-4" />
 			</SplideSlide>

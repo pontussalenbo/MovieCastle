@@ -7,7 +7,6 @@
 	import Divider from '../lib/Divider.svelte';
 	let movies = data.movies;
 	let myMovies: any[] = data.myMovies;
-	console.log(myMovies);
 	let submittedSearchText = '';
 </script>
 
