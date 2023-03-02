@@ -21,6 +21,12 @@ const getGenres = async (ids: number[]) => {
     return genres;
 }
 
+export const getAvailableGenres = async () => {
+    const query = `genre/movie/list`;
+    const resp = await fetchAPI(genReqQuery(query));
+    return resp.genres;
+}
+
 export const getPopular = async () => {
     const query = `movie/popular?region=SE`;
     const resp = await fetchAPI(genQuery(query));
@@ -56,10 +62,36 @@ export const getByTitle = async (title: string) => {
     return Promise.all(data);
 }
 
+export const getTrailerURL = async(id: string) => {
+    const query = `movie/${id}/videos`;
+    const resp = await fetchAPI(genReqQuery(query));
+    const trailer = resp.results.find((res: any) => res.type === "Trailer" && res.site === "YouTube" && res.name === "Official Trailer");
+    return `https://www.youtube-nocookie.com/embed/${trailer.key}`;
+    
+}
+
 export const getMovieInfo = async (id: string) => {
     const query = `movie/${id}`;
-    return await fetchAPI(genReqQuery(query));
+    return fetchAPI(genReqQuery(query));
 }
+
+export const getMoviesByGenre = async (genres: any[]) => {
+    const query = `discover/movie?sort_by=popularity.desc&include_adult=false&page=1&with_genres=${genres.map(g => g.id).join(",")}`
+    const resp = await fetchAPI(genQuery(query));
+    const data =  resp.results.map(async (movie: any) => {
+        return getGenres(movie.genre_ids)
+            .then(d => ({
+                id: movie.id,
+                title: movie.title,
+                genres: d,
+                poster: IMG_URL + movie.poster_path,
+                date: movie.release_date.split("-")[0],
+            }));
+    });
+
+    return Promise.all(data);
+}
+
 
 
 const fetchAPI = async (query: string) => {

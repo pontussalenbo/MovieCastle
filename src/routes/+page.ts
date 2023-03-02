@@ -1,6 +1,6 @@
 import type { LoadEvent } from '@sveltejs/kit';
 import { browser } from '$app/environment';
-import { getPopular } from '$lib/API';
+import { getAvailableGenres, getPopular } from '$lib/API';
 
 export async function load({ fetch, params }: LoadEvent) {
 	let myMovies = [];
@@ -11,7 +11,7 @@ export async function load({ fetch, params }: LoadEvent) {
 			myMovies = (browser && JSON.parse(localStorage.getItem('myMovies') ?? '')) || [];
 		}
 	}
-
+	const genres = getAvailableGenres();
 	const movies = getPopular();
-	return { myMovies, movies };
+	return { myMovies, movies, genres };
 }
