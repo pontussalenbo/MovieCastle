@@ -21,7 +21,22 @@ const getGenres = async (ids: number[]) => {
     return genres;
 }
 
+export const getPopular = async () => {
+    const query = `movie/popular?region=SE`;
+    const resp = await fetchAPI(genQuery(query));
 
+    const data = resp.results.map(async (movie: any) => {
+        return getGenres(movie.genre_ids)
+            .then(d => ({
+                id: movie.id,
+                title: movie.title,
+                genres: d,
+                poster: IMG_URL + movie.poster_path,
+                date: movie.release_date.split("-")[0],
+            }));
+    })
+    return Promise.all(data);
+}
 
 export const getByTitle = async (title: string) => {
     const query = `search/movie?query=${title}`;
