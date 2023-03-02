@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Search, Button } from 'flowbite-svelte';
-	import { getByTitle, getMoviesByGenre } from './API';
+	import { getByTitle, getMoviesByGenre, getPopular } from './API';
 
 	export let submittedSearchText = '';
 	export let movies;
@@ -11,7 +11,9 @@
 		e.preventDefault();
 		if (searchText.trim() === '') {
 			if (selectedGenres.length === 0) {
-				return;
+				getPopular().then((searchResult) => {
+					movies = searchResult;
+				});
 			}
 			getMoviesByGenre(selectedGenres).then((searchResult) => {
 				movies = searchResult;

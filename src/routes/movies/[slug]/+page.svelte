@@ -12,16 +12,15 @@
 	let trailerURL: string = '';
 	onMount(async () => {
 		movie = await getMovieInfo(data.slug);
-		console.log(movie);
 		myMovies = JSON.parse(localStorage.getItem('myMovies') ?? '[]');
 		trailerURL = await getTrailerURL(movie.id);
 	});
 
 	const handleAdd = () => {
-		if (myMovies.find((item) => movie.id === item.id)) return;
+		if (myMovies.find((item: any) => movie.id === item.id)) return;
 		movie['poster'] = POSTER_URL + movie.poster_path;
 		const { id, title, poster } = movie;
-		const genres = movie.genres.map((m) => m.name);
+		const genres = movie.genres.map((m: any) => m.name);
 		const date = movie.release_date.slice(0, 4);
 		const savedMovie = {
 			id,
@@ -68,7 +67,7 @@
 		</a>
 
 		<div class="flex flex-row w-2/3 z-10 min-h-[500px]">
-			<div class="min-w-[300px]"><Img src={POSTER_URL + movie.poster_path} /></div>
+			<Img class="w-[300px] h-[450px]" src={POSTER_URL + movie.poster_path} />
 			<div class="flex flex-col text-center ml-5 max-h-[450px]">
 				<div class="text-4xl">{movie.title + ' (' + movie.release_date.slice(0, 4) + ')'}</div>
 				<div class="text-lg overflow-auto">
