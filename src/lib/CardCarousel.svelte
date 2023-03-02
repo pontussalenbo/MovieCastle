@@ -1,7 +1,7 @@
 <script lang="ts">
 	// import Carousel from 'svelte-carousel';
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
-	import { CardPlaceholder } from 'flowbite-svelte';
+	import { Card, CardPlaceholder } from 'flowbite-svelte';
 	import '@splidejs/svelte-splide/css';
 	import MovieCard from './MovieCard.svelte';
 	let carousel;
@@ -12,9 +12,9 @@
 	const handleNextClick = () => {
 		carousel.goToNext();
 	};
-
 	$: splideOptions = {
-		perPage: movies ? Math.max(1, Math.min(movies.length, 5)) : 5,
+		fixedWidth: 200,
+		pagination: false,
 		perMove: 1,
 		gap: '2rem',
 		rewind: true
@@ -25,20 +25,11 @@
 	<div class="text-4xl font-medium mt-4">
 		{title}
 	</div>
-	<Splide
-		options={splideOptions}
-		class="flex flex-row"
-	>
-		{#if movies === undefined || movies.length === 0}
+	<Splide options={splideOptions} class="flex flex-row mt-5">
+		{#each movies as movie}
 			<SplideSlide>
-				<CardPlaceholder class="mt-4" />
+				<MovieCard {movie} bind:myMovies {moviecastle} />
 			</SplideSlide>
-		{:else}
-			{#each movies as movie}
-				<SplideSlide>
-					<MovieCard {movie} bind:myMovies {moviecastle} />
-				</SplideSlide>
-			{/each}
-		{/if}
+		{/each}
 	</Splide>
 </div>
