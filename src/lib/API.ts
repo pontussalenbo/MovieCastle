@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.themoviedb.org/3/";
+const BASE_URL = "https://api.themoviedb.org/3/";
 const IMG_URL = "https://themoviedb.org/t/p/w600_and_h900_bestv2/";
 const lang = "en-US";
 
